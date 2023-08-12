@@ -34,3 +34,8 @@ def books_index(request):
 
 def about(request):
     return render(request, "about.html")
+
+
+def book_detail(request, book_id):
+    book = Book.objects.get(id=book_id)
+    return render(request, "books/detail.html", {"book": book})
