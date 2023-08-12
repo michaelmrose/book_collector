@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 
 bookList = [
-    {"title": "Dune", "author": "Frank Herbert", "published": "1965"},
-    {"title": "Starfish", "author": "Peter Watts", "published": "1999"},
-    {"title": "The Gone World", "author": "Tom Sweterlitsch", "published": 2018},
+    {"title": "Dune", "author": "Frank Herbert", "published": "1965", "isbn":"0441013597"},
+    {"title": "Starfish", "author": "Peter Watts", "published": "1999", "isbn": "0812575857"},
+    {"title": "The Gone World", "author": "Tom Sweterlitsch", "published": "2018", "isbn": "0399167501"},
 ]
 
 

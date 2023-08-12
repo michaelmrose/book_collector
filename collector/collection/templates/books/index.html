@@ -11,9 +11,14 @@
         Authors: {{book.author}}
         <br>
         Published: {{book.published}}
+        <br>
+        ISBN: {{book.isbn}}
     </div>
-    <div class="card-footer"><button class="button">Buy</button><button class="button">Review</button><button
-            class="button">Discuss</button></div>
+    <div class="card-footer">
+        <a href="https://www.abebooks.com/servlet/SearchResults?isbn={{book.isbn}}" target="_blank" class="button">Buy</a>
+        <a class="button" href="https://www.goodreads.com/search?q={{book.isbn}}" target="_blank">Review</a>
+        <a class="button" href="" target="_blank">Discuss</a>
+    </div>
 </div>
 {% endfor %}
 {% endblock %}
