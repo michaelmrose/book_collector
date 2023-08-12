@@ -1,0 +1,22 @@
+.navbar-brand {
+    font-size: 25px
+}
+.navbar-item {
+    font-size: 25px;
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding: 3px 1px 1px 3px;
+  background-color: blueviolet;
+  color: whitesmoke;
+  border-radius: 5px;
+}
