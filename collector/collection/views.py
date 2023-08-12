@@ -1,9 +1,25 @@
 from django.shortcuts import render, redirect
+from .models import Book
 
 bookList = [
-    {"title": "Dune", "author": "Frank Herbert", "published": "1965", "isbn":"0441013597"},
-    {"title": "Starfish", "author": "Peter Watts", "published": "1999", "isbn": "0812575857"},
-    {"title": "The Gone World", "author": "Tom Sweterlitsch", "published": "2018", "isbn": "0399167501"},
+    {
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "published": "1965",
+        "isbn": "0441013597",
+    },
+    {
+        "title": "Starfish",
+        "author": "Peter Watts",
+        "published": "1999",
+        "isbn": "0812575857",
+    },
+    {
+        "title": "The Gone World",
+        "author": "Tom Sweterlitsch",
+        "published": "2018",
+        "isbn": "0399167501",
+    },
 ]
 
 
@@ -13,7 +29,7 @@ def home(request):
 
 
 def books_index(request):
-    return render(request, "books/index.html", {"books": bookList})
+    return render(request, "books/index.html", {"books": Book.objects.all()})
 
 
 def about(request):
