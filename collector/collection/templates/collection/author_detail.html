@@ -7,7 +7,21 @@
         <div class="card-header-title">{{author.name}}</div>
     </div>
     <div class="card-content">
-        {{author.books.all}}
+        {% for book in author.books.all %}
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title"> {{book.title}} </div>
+            </div>
+            <div class="card-content">
+            </div>
+            <div class="card-footer">
+                <a href="https://www.abebooks.com/servlet/SearchResults?isbn={{book.isbn}}" target="_blank"
+                    class="button">Buy</a>
+                <a class="button" href="https://www.goodreads.com/search?q={{book.isbn}}" target="_blank">Review</a>
+                <a class="button" href="/books/{{book.id}}">Details</a>
+            </div>
+        </div>
+        {%endfor%}
     </div>
     <div class="card-footer">
         <a class="button" href="/authors/">Back To List</a>
