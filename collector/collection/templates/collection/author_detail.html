@@ -24,7 +24,8 @@
         {%endfor%}
     </div>
     <div class="card-footer">
-        <a class="button" href="/authors/">Back To List</a>
+        <a class="button has-text-danger-light has-background-danger" href="/authors/{{author.id}}/delete/">Delete</a>
+        <a class="button " href="/authors/">Back To List</a>
     </div>
 </div>
 {% endblock %}

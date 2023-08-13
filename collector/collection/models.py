@@ -14,7 +14,7 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-    books = models.ManyToManyField("Book")
+    books = models.ManyToManyField("Book", null=True, blank=True)
 
 
 class Book(models.Model):

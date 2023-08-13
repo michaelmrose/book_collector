@@ -1,22 +1,24 @@
-.navbar-brand {
-    font-size: 25px
+.navbar{
+  background-color: #eee;
 }
-.navbar-item {
+.navbar-brand {
     font-size: 25px;
 }
-html {
-  height: 100%;
+.navbar-item {
+  color: black;
+    font-size: 25px;
 }
-body {
-  min-height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
-}
+html, body { height: 95vh; background-color: #eee; }
 .footer {
-  grid-row-start: 2;
-  grid-row-end: 3;
   padding: 3px 1px 1px 3px;
   background-color: blueviolet;
-  color: whitesmoke;
+  color:white;
   border-radius: 5px;
+  height: 5vh;
+  margin-bottom:5vh;
+}
+.card {
+  max-width: 600px;
+  margin-top: 50px;
+  background-color: white;
 }

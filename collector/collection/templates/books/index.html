@@ -5,10 +5,13 @@
 {% for book in books%}
 <div class="card">
     <div class="card-header">
-        <div class="card-header-title">{{book.title}}</div>
+        <div class="card-header-title">{{book.title}} </div>
+
     </div>
     <div class="card-content">
-        Authors: {{book.author}}
+        Authors:{%for author in book.authors.all%}
+        <a href="/authors/{{author.id}}/">{{author}}</a>,
+        {%endfor%}
         <br>
         Published: {{book.publicationDate}}
         <br>

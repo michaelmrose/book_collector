@@ -10,7 +10,9 @@
     </div>
     <div class="card-content">
         <h2 class="title is-5">Details</h2>
-        Authors: {{book.author}}
+        Authors:{%for author in book.authors.all%}
+        <a href="/authors/{{author.id}}/">{{author}}</a>,
+        {%endfor%}
         <br>
         Published: {{book.publicationDate}}
         <br>

@@ -47,7 +47,7 @@ def book_detail(request, book_id):
 
 class AuthorList(ListView):
     model = Author
-    fields = '__all__'
+    fields = "__all__"
 
 
 class AuthorDetails(DetailView):
@@ -56,10 +56,13 @@ class AuthorDetails(DetailView):
 
 class AuthorCreate(CreateView):
     model = Author
+    fields = ["name"]
+    success_url = "/authors/"
 
 
 class AuthorDelete(DeleteView):
     model = Author
+    success_url = "/authors/"
 
 
 class AuthorUpdate(UpdateView):
