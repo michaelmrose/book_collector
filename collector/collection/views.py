@@ -37,7 +37,7 @@ class AuthorDetails(DetailView):
 
 class AuthorCreate(CreateView):
     model = Author
-    fields = ["name"]
+    fields = ["name", "bio", "primary_genre"]
 
     # we are passsing next in the book form
     def get_success_url(self):
@@ -52,7 +52,7 @@ class AuthorDelete(DeleteView):
 
 class AuthorUpdate(UpdateView):
     model = Author
-    fields = ["name"]
+    fields = ["name", "bio", "primary_genre"]
     success_url = "/authors/"
 
 
@@ -60,8 +60,9 @@ class BookCreate(CreateView):
     model = Book
     fields = [
         "title",
+        "series",
         "description",
-        "publicationDate",
+        "publication_date",
         "isbn",
         "authors",
     ]
@@ -70,7 +71,7 @@ class BookCreate(CreateView):
     # thanks stackoverflow https://stackoverflow.com/questions/21405895/datepickerwidget-in-createview
     def get_form(self, form_class=None):
         form = super(BookCreate, self).get_form(form_class)
-        form.fields["publicationDate"].widget = AdminDateWidget(attrs={"type": "date"})
+        form.fields["publication_date"].widget = AdminDateWidget(attrs={"type": "date"})
         return form
 
     # I really want the book form to save and restore its data so that a partially filled out form can be retained
@@ -84,5 +85,5 @@ class BookDelete(DeleteView):
 
 class BookUpdate(UpdateView):
     model = Book
-    fields = ["title", "description", "authors", "publicationDate", "isbn"]
+    fields = ["title", "series", "description", "authors", "publication_date", "isbn"]
     success_url = "/books/"
