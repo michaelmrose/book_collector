@@ -67,3 +67,5 @@ class AuthorDelete(DeleteView):
 
 class AuthorUpdate(UpdateView):
     model = Author
+    fields = ["name"]
+    success_url = "/authors/"
