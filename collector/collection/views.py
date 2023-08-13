@@ -2,30 +2,10 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.admin.widgets import AdminDateWidget
+from django.urls import reverse_lazy
 
 from .models import Book
 from .models import Author
-
-bookList = [
-    {
-        "title": "Dune",
-        "author": "Frank Herbert",
-        "published": "1965",
-        "isbn": "0441013597",
-    },
-    {
-        "title": "Starfish",
-        "author": "Peter Watts",
-        "published": "1999",
-        "isbn": "0812575857",
-    },
-    {
-        "title": "The Gone World",
-        "author": "Tom Sweterlitsch",
-        "published": "2018",
-        "isbn": "0399167501",
-    },
-]
 
 
 # Create your views here.
@@ -58,7 +38,11 @@ class AuthorDetails(DetailView):
 class AuthorCreate(CreateView):
     model = Author
     fields = ["name"]
-    success_url = "/authors/"
+
+    # we are passsing next in the book form
+    def get_success_url(self):
+        # Redirect back to the previous page or default to the home page
+        return self.request.GET.get("next", reverse_lazy("author_index"))
 
 
 class AuthorDelete(DeleteView):
@@ -74,7 +58,13 @@ class AuthorUpdate(UpdateView):
 
 class BookCreate(CreateView):
     model = Book
-    fields = ["title", "description", "publicationDate", "isbn", "authors", ]
+    fields = [
+        "title",
+        "description",
+        "publicationDate",
+        "isbn",
+        "authors",
+    ]
     success_url = "/books/"
 
     # thanks stackoverflow https://stackoverflow.com/questions/21405895/datepickerwidget-in-createview
@@ -82,6 +72,9 @@ class BookCreate(CreateView):
         form = super(BookCreate, self).get_form(form_class)
         form.fields["publicationDate"].widget = AdminDateWidget(attrs={"type": "date"})
         return form
+
+    # I really want the book form to save and restore its data so that a partially filled out form can be retained
+    # after a new author is added but can't get this feature working yet.
 
 
 class BookDelete(DeleteView):
