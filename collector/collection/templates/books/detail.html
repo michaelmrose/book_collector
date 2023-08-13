@@ -17,10 +17,12 @@
         Published: {{book.publicationDate}}
         <br>
         ISBN: {{book.isbn}}
-        <h2 class="title is-4">description</h2>
+        <h2 class="title is-5">description</h2>
         {{book.description}}
     </div>
     <div class="card-footer">
+        <a href="/books/{{book.id}}/delete" class="button has-background-danger has-text-light">Delete</a>
+        <a href="/books/{{book.id}}/update" class="button has-background-link has-text-light mr-6">Update</a>
         <a href="https://www.abebooks.com/servlet/SearchResults?isbn={{book.isbn}}" target="_blank"
             class="button">Buy</a>
         <a class="button" href="https://www.goodreads.com/search?q={{book.isbn}}" target="_blank">Review</a>

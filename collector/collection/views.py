@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.contrib.admin.widgets import AdminDateWidget
 
 from .models import Book
 from .models import Author
@@ -69,3 +70,26 @@ class AuthorUpdate(UpdateView):
     model = Author
     fields = ["name"]
     success_url = "/authors/"
+
+
+class BookCreate(CreateView):
+    model = Book
+    fields = ["title", "description", "publicationDate", "isbn", "authors", ]
+    success_url = "/books/"
+
+    # thanks stackoverflow https://stackoverflow.com/questions/21405895/datepickerwidget-in-createview
+    def get_form(self, form_class=None):
+        form = super(BookCreate, self).get_form(form_class)
+        form.fields["publicationDate"].widget = AdminDateWidget(attrs={"type": "date"})
+        return form
+
+
+class BookDelete(DeleteView):
+    model = Book
+    success_url = "/books/"
+
+
+class BookUpdate(UpdateView):
+    model = Book
+    fields = ["title", "description", "authors", "publicationDate", "isbn"]
+    success_url = "/books/"
