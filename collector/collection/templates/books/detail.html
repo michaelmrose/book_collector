@@ -22,11 +22,11 @@
     </div>
     <div class="card-footer">
         <a href="/books/{{book.id}}/delete" class="button has-background-danger has-text-light">Delete</a>
-        <a href="/books/{{book.id}}/update" class="button has-background-link has-text-light mr-6">Update</a>
+        <a href="/books/{{book.id}}/update" class="button has-background-link has-text-light mr-3">Update</a>
+        <a class="button  has-background-info" href="https://www.goodreads.com/search?q={{book.isbn}}"
+            target="_blank">Discuss</a>
         <a href="https://www.abebooks.com/servlet/SearchResults?isbn={{book.isbn}}" target="_blank"
-            class="button">Buy</a>
-        <a class="button" href="https://www.goodreads.com/search?q={{book.isbn}}" target="_blank">Review</a>
-        <a class="button" href="/books ">Back to List</a>
+            class="button has-background-primary has-text-light">Buy</a>
     </div>
 </div>
 {% endblock %}
