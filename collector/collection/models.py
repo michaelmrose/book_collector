@@ -7,12 +7,15 @@ from datetime import date
 
 from django.db import models
 
+
 class Author(models.Model):
     name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
-        books = models.ManyToManyField(Book)
+
+    books = models.ManyToManyField("Book")
+
 
 class Book(models.Model):
     def __str__(self):
@@ -23,8 +26,7 @@ class Book(models.Model):
         max_length=10,
         validators=[RegexValidator("\d{10}", message="ISBN are 10 numeric characters")],
     )
+
     authors = models.ManyToManyField(Author)
     publicationDate = models.DateField(default=date.today())
     description = models.TextField(max_length=1000, default="")
-
-

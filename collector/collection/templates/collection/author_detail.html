@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title is-3">Authors</h1>
+<div class="card">
+    <div class="card-header">
+        <div class="card-header-title">{{author.name}}</div>
+    </div>
+    <div class="card-content">
+        {{author.books.all}}
+    </div>
+    <div class="card-footer">
+        <a class="button" href="/authors/">Back To List</a>
+    </div>
+</div>
+{% endblock %}
