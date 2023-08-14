@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from .models import Book
 from .models import Author
 from .models import Series
+from .models import Tag
 
 
 # Create your views here.
@@ -62,10 +63,12 @@ class BookCreate(CreateView):
     fields = [
         "title",
         "series",
+        "number_in_series",
         "description",
         "publication_date",
         "isbn",
         "authors",
+        "tags",
     ]
     success_url = "/books/"
 
@@ -86,7 +89,16 @@ class BookDelete(DeleteView):
 
 class BookUpdate(UpdateView):
     model = Book
-    fields = ["title", "series", "description", "publication_date", "isbn", "authors"]
+    fields = [
+        "title",
+        "series",
+        "number_in_series",
+        "description",
+        "publication_date",
+        "isbn",
+        "authors",
+        "tags",
+    ]
     success_url = "/books/"
 
     def get_form(self, form_class=None):
@@ -126,3 +138,36 @@ class SeriesUpdate(UpdateView):
     model = Series
     fields = "__all__"
     success_url = "/series/"
+
+
+# tags
+
+
+class TagList(ListView):
+    model = Tag
+    fields = "__all__"
+
+
+class TagDetails(DetailView):
+    model = Tag
+
+
+class TagCreate(CreateView):
+    model = Tag
+    fields = "__all__"
+
+    # we are passsing next in the book form
+    def get_success_url(self):
+        # Redirect back to the previous page or default to the home page
+        return self.request.GET.get("next", reverse_lazy("index"))
+
+
+class TagDelete(DeleteView):
+    model = Tag
+    success_url = "/tags/"
+
+
+class TagUpdate(UpdateView):
+    model = Tag
+    fields = "__all__"
+    success_url = "/tags/"

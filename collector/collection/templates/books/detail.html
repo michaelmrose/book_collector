@@ -24,7 +24,7 @@
             <section>
                 {% if book.series%}
                 <h3 class="title is-6 my-3">Series</h2>
-                    {{book.series}}
+                    <a href="/series/{{book.series.id}}/">{{book.series}}</a>
             </section>
             {% endif%}
     </div>

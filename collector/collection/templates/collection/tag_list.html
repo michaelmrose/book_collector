@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title is-3 mt-3">Tags <a href="/tags/create" class="button">+</a></h1>
+{% for tag in tag_list %}
+<div class="card">
+    <div class="card-header">
+        <div class="card-header-title">{{tag.name}}</div>
+    </div>
+    <div class="card-content">
+        {% if tag.books.all%}
+        <ul>
+            {% for book in tag.books.all %}
+            <li><a href="/books/{{book.id}}/">{{book.title}}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <div class="card-footer">
+        <a class="button has-background-info has-text-info-light" href="/tags/{{tag.id}}">Details</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

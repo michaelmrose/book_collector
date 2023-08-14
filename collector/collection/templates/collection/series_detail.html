@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title is-3 mt-3">Series</h1>
+<div class="card">
+    <div class="card-header">
+        <div class="card-header-title ">
+            <h2 class="title is-4">{{series.title}}</h2>
+        </div>
+    </div>
+    <div class="card-content">
+        {% for book in series.books.all %}
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title"> {{book.title}} </div>
+            </div>
+            <div class="card-content">
+                <h3 class="title is-6 my-3">Details</h2>
+                    Authors:{%for author in book.authors.all%}
+                    <a href="/authors/{{author.id}}/">{{author}}</a>,
+                    {%endfor%}
+                    <br>
+                    Published: {{book.publication_date}}
+                    <br>
+                    ISBN: {{book.isbn}}
+                    <section>
+                        <h3 class="title is-6 my-3">description</h2>
+                            {{book.description}}
+                    </section>
+                    <section>
+                        {% if book.series%}
+                        <h3 class="title is-6 my-3">Series</h2>
+                            {{book.series}}
+                    </section>
+                    {% endif%}
+            </div>
+            <div class="card-footer">
+                <a href="https://www.abebooks.com/servlet/SearchResults?isbn={{book.isbn}}" target="_blank"
+                    class="button">Buy</a>
+                <a class="button" href="https://www.goodreads.com/search?q={{book.isbn}}" target="_blank">Review</a>
+                <a class="button" href="/books/{{book.id}}">Details</a>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="card-footer">
+        <a class="button has-text-danger-light has-background-danger" href="/series/{{series.id}}/delete/">Delete
+            Series</a>
+        <a class="button has-text-light has-background-link" href="/series/{{series.id}}/update/">Edit</a>
+    </div>
+</div>
+{% endblock %}

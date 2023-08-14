@@ -16,7 +16,12 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-    # books = models.ManyToManyField("Book", null=True, blank=True)
+
+class Tag(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
 
 
 class Series(models.Model):
@@ -38,9 +43,21 @@ class Book(models.Model):
     )
 
     authors = models.ManyToManyField(Author, related_name="books")
+    tags = models.ManyToManyField(
+        Tag,
+        default=None,
+        blank=True,
+        null=True,
+        related_name="books",
+    )
     publication_date = models.DateField(default=date.today())
     description = models.TextField(max_length=1000, default="")
     series = models.ForeignKey(
-        Series, on_delete=models.CASCADE, default=None, blank=True, null=True
+        Series,
+        on_delete=models.CASCADE,
+        default=None,
+        blank=True,
+        null=True,
+        related_name="books",
     )
     number_in_series = models.IntegerField(default=1)
