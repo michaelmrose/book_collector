@@ -8,6 +8,25 @@
         <div class="card-header-title">{{author.name}}</div>
     </div>
     <div class="card-content">
+        {% if author.books.all %}
+        <section>
+            <h2 class="title is-5 my-3">Known For</h2>
+            {{author.books.all.0.title}}
+        </section>
+        {% endif%}
+        <section class="truncate-overflow">
+            <h2 class="title is-5 my-3">Bio</h2>
+            {{author.bio}}
+
+        </section>
+
+        {% if author.primary_genre%}
+        <section>
+            <h3 class="title is-6 my-3">Primary Genre</h2>
+                {{author.primary_genre}}
+        </section>
+        {%endif%}
+
     </div>
     <div class="card-footer">
         <a class="button has-background-info has-text-info-light" href="/authors/{{author.id}}">Details</a>

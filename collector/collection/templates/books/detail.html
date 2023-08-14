@@ -17,20 +17,20 @@
             Published: {{book.publication_date}}
             <br>
             ISBN: {{book.isbn}}
-                <section >
-            <h3 class="title is-6 my-3">description</h2>
+            <section>
+                <h3 class="title is-6 my-3">description</h2>
                     {{book.description}}
-                </section>
-                <section >
-            {% if book.series%}
-            <h3 class="title is-6 my-3">Series</h2>
+            </section>
+            <section>
+                {% if book.series%}
+                <h3 class="title is-6 my-3">Series</h2>
                     {{book.series}}
-                </section>
+            </section>
             {% endif%}
     </div>
     <div class="card-footer">
         <a href="/books/{{book.id}}/delete" class="button has-background-danger has-text-light">Delete</a>
-        <a href="/books/{{book.id}}/update" class="button has-background-link has-text-light mr-3">Update</a>
+        <a href="/books/{{book.id}}/update" class="button has-background-link has-text-light mr-3">Edit</a>
         <a class="button  has-background-info" href="https://www.goodreads.com/search?q={{book.isbn}}"
             target="_blank">Discuss</a>
         <a href="https://www.abebooks.com/servlet/SearchResults?isbn={{book.isbn}}" target="_blank"
