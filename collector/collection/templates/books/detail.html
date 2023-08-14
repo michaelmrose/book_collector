@@ -21,12 +21,44 @@
                 <h3 class="title is-6 my-3">description</h2>
                     {{book.description}}
             </section>
+            {% if book.series%}
             <section>
-                {% if book.series%}
                 <h3 class="title is-6 my-3">Series</h2>
                     <a href="/series/{{book.series.id}}/">{{book.series}}</a>
             </section>
             {% endif%}
+            {% if book.tags.all%}
+            <section>
+                <h3 class="title is-6 my-3">Tags</h2>
+                    <table>
+                        {% for tag in book.tags.all%}
+                        <tr>
+                            <td>
+                                <a href="/tags/{{tag.id}}">{{tag.name}}</a>
+                            </td>
+                            <td>
+                                <a class="button ml-3 is-small has-background-danger has-text-light is-rounded"> ✖ </a>
+                            </td>
+                        </tr>
+                        {% endfor%}
+                    </table>
+            </section>
+            {% endif%}
+            <section>
+                <h3 class="title is-6 my-3">Available Tags</h2>
+                    <table>
+                        {% for tag in available_tags%}
+                        <tr>
+                            <td>
+                                <a href="/tags/{{tag.id}}">{{tag.name}}</a>
+                            </td>
+                            <td>
+                                <a class="button ml-3 is-small has-background-primary has-text-light is-rounded"> + </a>
+                            </td>
+                        </tr>
+                        {% endfor%}
+                    </table>
+            </section>
     </div>
     <div class="card-footer">
         <a href="/books/{{book.id}}/delete" class="button has-background-danger has-text-light">Delete</a>

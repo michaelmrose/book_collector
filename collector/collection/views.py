@@ -25,7 +25,13 @@ def about(request):
 
 def book_detail(request, book_id):
     book = Book.objects.get(id=book_id)
-    return render(request, "books/detail.html", {"book": book})
+    all_tags = set(Tag.objects.all())
+    available_tags = list(all_tags.difference(book.tags.all()))
+    return render(
+        request,
+        "books/detail.html",
+        {"book": book, "available_tags": available_tags},
+    )
 
 
 class AuthorList(ListView):
