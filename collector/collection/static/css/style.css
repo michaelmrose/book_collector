@@ -1,17 +1,6 @@
 :root {
   --lh: 2.4rem;
 }
-.navbar {
-  background-color: blueviolet;
-}
-.navbar-brand {
-    font-size: 25px;
-}
-.navbar-item {
-  color:white;
-    font-size: 25px;
-    border-radius: 5px;
-}
 html, body { height: 95vh; background-color: #eee; }
 .footer {
   padding: 3px 1px 1px 3px;
@@ -63,3 +52,38 @@ html, body { height: 95vh; background-color: #eee; }
 .has-background-light {
   background-color: white!important;
 }
+
+.navbar {
+  background-color: blueviolet;
+}
+.navbar-brand {
+    font-size: 15px;
+}
+.navbar>.container {
+        align-items: stretch;
+        display: flex;
+        min-height: 3.25rem;
+        width: 100%;
+    }
+    .navbar-burger {
+        display: none;
+    }
+    .navbar-menu {
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        justify-content: flex-end;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+    .navbar, .navbar-end, .navbar-menu, .navbar-start {
+        display: flex;
+        align-items: stretch;
+    }
+    .navbar-item {
+      color:white;
+      font-size: 15px;
+      border-radius: 5px;
+        display: flex;
+        align-items: center;
+    }
