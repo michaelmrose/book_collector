@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="title is-3 mt-3">Books</h1>
+<h1 class="title is-3 mt-3">Books <a href="/books/create" class="button">+</a></h1>
+
 {% for book in books%}
 <div class="card">
     <div class="card-header">
