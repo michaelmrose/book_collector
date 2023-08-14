@@ -16,7 +16,7 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-    books = models.ManyToManyField("Book", null=True, blank=True)
+    # books = models.ManyToManyField("Book", null=True, blank=True)
 
 
 class Series(models.Model):
@@ -37,7 +37,7 @@ class Book(models.Model):
         validators=[RegexValidator("\d{10}", message="ISBN are 10 numeric characters")],
     )
 
-    authors = models.ManyToManyField(Author)
+    authors = models.ManyToManyField(Author, related_name="books")
     publication_date = models.DateField(default=date.today())
     description = models.TextField(max_length=1000, default="")
     series = models.ForeignKey(
