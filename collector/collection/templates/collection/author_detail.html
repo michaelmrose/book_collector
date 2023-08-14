@@ -49,16 +49,17 @@
                     {% endif%}
             </div>
             <div class="card-footer">
-                <a href="https://www.abebooks.com/servlet/SearchResults?isbn={{book.isbn}}" target="_blank"
-                    class="button">Buy</a>
                 <a class="button" href="https://www.goodreads.com/search?q={{book.isbn}}" target="_blank">Review</a>
                 <a class="button" href="/books/{{book.id}}">Details</a>
+                <a href="https://www.abebooks.com/servlet/SearchResults?isbn={{book.isbn}}" target="_blank"
+                    class="button">Buy</a>
             </div>
         </div>
         {%endfor%}
     </div>
     <div class="card-footer">
-        <a class="button has-text-danger-light has-background-danger" href="/authors/{{author.id}}/delete/">Delete</a>
+        <a class="button has-text-danger-light has-background-danger" href="/authors/{{author.id}}/delete/">Delete
+            Author</a>
         <a class="button has-text-light has-background-link" href="/authors/{{author.id}}/update/">Edit</a>
     </div>
 </div>
