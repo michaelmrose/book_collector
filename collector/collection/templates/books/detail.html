@@ -37,7 +37,8 @@
                                 <a href="/tags/{{tag.id}}">{{tag.name}}</a>
                             </td>
                             <td>
-                                <a class="button ml-3 is-small has-background-danger has-text-light is-rounded"> ✖ </a>
+                                <a href="/books/{{book.id}}/disassociate_tag/{{tag.id}}"
+                                    class="button ml-3 is-small has-background-danger has-text-light is-rounded"> ✖ </a>
                             </td>
                         </tr>
                         {% endfor%}
@@ -53,7 +54,9 @@
                                 <a href="/tags/{{tag.id}}">{{tag.name}}</a>
                             </td>
                             <td>
-                                <a class="button ml-3 is-small has-background-primary has-text-light is-rounded"> + </a>
+                                <a href="/books/{{book.id}}/associate_tag/{{tag.id}}"
+                                    class="button ml-3 is-small has-background-primary has-text-light is-rounded"> +
+                                </a>
                             </td>
                         </tr>
                         {% endfor%}

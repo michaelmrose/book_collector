@@ -132,7 +132,7 @@ class SeriesCreate(CreateView):
     # we are passsing next in the book form
     def get_success_url(self):
         # Redirect back to the previous page or default to the home page
-        return self.request.GET.get("next", reverse_lazy("index"))
+        return self.request.GET.get("next", reverse_lazy("series_index"))
 
 
 class SeriesDelete(DeleteView):
@@ -165,7 +165,7 @@ class TagCreate(CreateView):
     # we are passsing next in the book form
     def get_success_url(self):
         # Redirect back to the previous page or default to the home page
-        return self.request.GET.get("next", reverse_lazy("index"))
+        return self.request.GET.get("next", reverse_lazy("tags_index"))
 
 
 class TagDelete(DeleteView):
@@ -177,3 +177,13 @@ class TagUpdate(UpdateView):
     model = Tag
     fields = "__all__"
     success_url = "/tags/"
+
+
+def associate_tag(request, book_id, tag_id):
+    Book.objects.get(id=book_id).tags.add(tag_id)
+    return redirect("detail", book_id=book_id)
+
+
+def disassociate_tag(request, book_id, tag_id):
+    Book.objects.get(id=book_id).tags.remove(tag_id)
+    return redirect("detail", book_id=book_id)

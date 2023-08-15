@@ -9,6 +9,16 @@ urlpatterns = [
     path("books/create/", views.BookCreate.as_view(), name="book_create"),
     path("books/<int:pk>/delete/", views.BookDelete.as_view(), name="book_delete"),
     path("books/<int:pk>/update/", views.BookUpdate.as_view(), name="book_update"),
+    path(
+        "books/<int:book_id>/associate_tag/<int:tag_id>/",
+        views.associate_tag,
+        name="associate_tag",
+    ),
+    path(
+        "books/<int:book_id>/disassociate_tag/<int:tag_id>/",
+        views.disassociate_tag,
+        name="disassociate_tag",
+    ),
     # authors
     path("authors/", views.AuthorList.as_view(), name="author_index"),
     path("authors/<int:pk>/", views.AuthorDetails.as_view(), name="author_detail"),

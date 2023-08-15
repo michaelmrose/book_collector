@@ -2,9 +2,9 @@
 
 {% block content %}
 {% if object %}
-<h1 class="title">{{object.name}}</h1>
+<h1 class="title mt-3">Edit: {{object.title}}</h1>
 {% else %}
-<h1 class="title">Add Book</h1>
+<h1 class="title mt-3">Add Book</h1>
 {% endif %}
 <form action="" method="post">
     {% csrf_token %}
@@ -12,11 +12,22 @@
         {{form.as_table}}
     </table>
     <h2 class="title is-5 my-3">Don't See Your Author, Tag, or Series?</h2>
+    <!-- If object exists we are editing a book and next should point back to the form where we are editing it
+        after we have created a new tag/author/series. save_book_data=1 is an as of yet incomplete attempt to 
+    preserve a partially filled out form in order to provide a more reasonable user experience -->
+    {% if object %}
+    <a href="/authors/create?next=/books/{{object.id}}/update&save_book_data=1">Add a new author</a>
+    <br>
+    <a href="/tags/create?next=/books/{{object.id}}/update&save_book_data=1">Add a new tag</a>
+    <br>
+    <a href="/series/create?next=/books/{{object.id}}/update&save_book_data=1">Add a new series</a>
+    {% else %}
     <a href="/authors/create?next=/books/create&save_book_data=1">Add a new author</a>
     <br>
     <a href="/tags/create?next=/books/create&save_book_data=1">Add a new tag</a>
     <br>
     <a href="/series/create?next=/books/create&save_book_data=1">Add a new series</a>
+    {% endif%}
     <p>
         <input type="submit" class="button mt-5 has-background-primary has-text-light" value="Submit">
     </p>
